@@ -1,0 +1,16 @@
+<div class="jumbotron">
+    <h1 class="display-4">Heroes</h1>
+    <hr class="my-4">
+    <div class="card-columns">
+        <a *ngFor="let heroe of heroes; let i=index;" [routerLink]="[ '/info', i ]">
+            <div class="card">
+                <img class="card-img-top" src="{{heroe.img}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{heroe.nombre}}</h5>
+                    <p class="card-text">{{heroe.casa}}</p>
+                    <p class="card-text"><small class="text-muted">Primera aparicion: {{heroe.aparicion.getMonth()}} de {{heroe.aparicion.getFullYear()}}</small></p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
