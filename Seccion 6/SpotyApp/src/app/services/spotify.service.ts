@@ -6,8 +6,8 @@ import { Album } from '../components/album-card/album-card.component';
   providedIn: 'root'
 })
 export class SpotifyService {
-  token = 'Bearer BQC3_hAU7qIvLjxfpUoWIzIluTBM5IdSCxiSNm3_4_73D9NvzEn-d3xhC4LgNCTyQZ__otSOdrj' +
-  'q4cKLknXi6nQuadVyGyxUgJep_X4Wuc27qJOtQnRkSyPhqD_BsoEgQblDUhgojc4Ys40vrildX7_vpvk3Ew8Lv4eqss5AW1AeXw';
+  token = 'Bearer BQDTBaCmnWjuLwgGCwnNOtOBv0FLqNtXt0PnEgPcLwFwzWtbi1ed7-JlwSLy_aIrt41yU8tIZOD4aUphnpkvPdMJ7jUzq6' +
+  'Z9Cx7yXE7QodAz-C8ORfAv6iwzo6tk1u2cJU97nYNAWn-xRT3LmlIW2YG877DA70VSorMEbKf0xGCskw';
   searchVal: string;
 
   constructor(private http: HttpClient) {}
