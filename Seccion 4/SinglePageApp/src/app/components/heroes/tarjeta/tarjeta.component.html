@@ -1,0 +1,8 @@
+<div class="card" (click)="onSelected()">
+    <img class="card-img-top" src="{{heroe.val.img}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{heroe.val.nombre}}</h5>
+        <p class="card-text">{{heroe.val.casa}}</p>
+        <p class="card-text"><small class="text-muted">Primera aparicion: {{heroe.val.aparicion | date:'MMMM y'}}</small></p>
+    </div>
+</div>

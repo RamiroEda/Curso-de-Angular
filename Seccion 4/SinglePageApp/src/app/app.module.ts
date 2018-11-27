@@ -10,6 +10,8 @@ import { AboutComponent } from './components/about/about.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroesService } from './services/heroes.service';
 import { HeroeInfoComponent } from './components/heroe-info/heroe-info.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
+import { TarjetaComponent } from './components/heroes/tarjeta/tarjeta.component';
 
 
 
@@ -20,7 +22,9 @@ import { HeroeInfoComponent } from './components/heroe-info/heroe-info.component
     HomeComponent,
     AboutComponent,
     HeroesComponent,
-    HeroeInfoComponent
+    HeroeInfoComponent,
+    BuscarComponent,
+    TarjetaComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
     <div class="col">
         <div class="float-left card mr-3">
             <div class="card-header text-center">
-                <h5 class="card-title">{{heroe.nombre}}</h5>
+                <h5 class="card-title">{{heroe.nombre | uppercase}}</h5>
             </div>
             <img class="card-img-top" src="{{heroe.img}}">
             <div class="card-body">
@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                         <td>Primera aparicion</td>
-                        <td>{{heroe.aparicion.getFullYear()}}</td>
+                        <td>{{heroe.aparicion | date:'y'}}</td>
                     </tr>
                 </table>
             </div>

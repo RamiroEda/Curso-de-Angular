@@ -1,0 +1,8 @@
+<nav class="navbar navbar-dark sticky-top bg-dark">
+    <a class="navbar-brand" [routerLink]="[ '/home' ]">
+        <img src="assets/icon.ico" width="30" height="30" class="d-inline-block align-top" alt=""> Spotify Angular
+    </a>
+    <div class="form-inline">
+        <input (keyup)="buscar(searchForm.value)" class="form-control" type="search" placeholder="Buscar artista" aria-label="Search" #searchForm>
+    </div>
+</nav>

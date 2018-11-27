@@ -1,0 +1,95 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">Pipe</th>
+                <th scope="col">Producto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{nombre}}</th>
+                <td>Uppercase</td>
+                <td>{{nombre | uppercase}}</td>
+            </tr>
+            <tr>
+                <th>{{nombre}}</th>
+                <td>Lowecase</td>
+                <td>{{nombre | lowercase}}</td>
+            </tr>
+            <tr>
+                <th>{{nombre}}</th>
+                <td>Slice:3</td>
+                <td>{{nombre | slice:3}}</td>
+            </tr>
+            <tr>
+                <th>{{nombre}}</th>
+                <td>Slice:0:3</td>
+                <td>{{nombre | slice:0:3}}</td>
+            </tr>
+            <tr>
+                <th>{{arreglo}}</th>
+                <td>Slice:1:5</td>
+                <td>{{arreglo | slice:1:5}}</td>
+            </tr>
+            <tr>
+                <th>{{PI}}</th>
+                <td>number:'3.0-0'</td>
+                <td>{{PI | number:'3.0-0'}}</td>
+            </tr>
+            <tr>
+                <th>{{PI}}</th>
+                <td>number:'1.0-2'</td>
+                <td>{{PI | number:'1.0-2'}}</td>
+            </tr>
+            <tr>
+                <th>{{numero}}</th>
+                <td>percent:'1.0-2'</td>
+                <td>{{numero | percent:'1.0-2'}}</td>
+            </tr>
+            <tr>
+                <th>{{salario}}</th>
+                <td>currency:'KRW':'symbol-narrow':'1.0-2'</td>
+                <td>{{salario | currency:'KRW':'symbol-narrow':'1.0-2'}}</td>
+            </tr>
+            <tr>
+                <th>{{objeto}}</th>
+                <td>json</td>
+                <td><pre>{{objeto | json}}</pre></td>
+            </tr>
+
+            <tr>
+                <th>{{promesa}}</th>
+                <td>async</td>
+                <td>{{promesa | async}}</td>
+            </tr>
+            <tr>
+                <th>{{dateTime}}</th>
+                <td>date en español</td>
+                <td>{{dateTime | date:'fullDate':undefined:'es_MX'}}</td>
+            </tr>
+            <tr>
+                <th>{{malString}}</th>
+                <td>capitalizar:2</td>
+                <td>{{malString | capitalizar:2}}</td>
+            </tr>
+
+            <tr>
+                <th>{{pass}}</th>
+                <td>contrasena:{{visibleStatus}}
+                    <button class="btn" (click)="visibleStatus = !visibleStatus">Toggle</button>
+                </td>
+                <td>{{pass | contrasena:visibleStatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Slice ngFor 3:8</h3>
+    <ul>
+        <li *ngFor="let n of arreglo | slice:3:8">{{n}}</li>
+    </ul>
+
+    <h3>Video de Youtube</h3>
+    <iframe width="560" height="315" [src]="videoUrl | domSeguro:'https://www.youtube.com/embed/'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

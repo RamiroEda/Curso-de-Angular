@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <h1 class="display-4">Resultados de: {{nombre}}</h1>
+    <hr class="my-4">
+    <ng-container *ngIf="heroes.length > 0; else else404">
+        <div class="card-columns">
+            <app-tarjeta *ngFor="let heroe of heroes; let i=index" [heroe]="heroe" (eleccion)="verHeroe( $event )"></app-tarjeta>
+        </div>
+    </ng-container>
+    <ng-template #else404>
+        <div class="alert alert-info">
+            No se han encontrado resultados
+        </div>
+    </ng-template>
+</div>

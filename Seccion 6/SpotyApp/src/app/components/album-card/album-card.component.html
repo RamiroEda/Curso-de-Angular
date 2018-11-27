@@ -1,0 +1,10 @@
+<a [routerLink]="[ '/artist', album.id ]">
+    <img class="card-img" src="{{album.urlImagen}}" alt="Card image">
+    <div class="card-img-overlay">
+        <div class="card-overcontent">
+            <h5 class="card-title">{{album.nombre}}</h5>
+            {{album.artista}} <br>
+            <span *ngIf="album.fechaPublicacion">Fecha de publicacion: {{album.fechaPublicacion | date:'dd/MM/yyyy'}}</span>
+        </div>
+    </div>
+</a>
