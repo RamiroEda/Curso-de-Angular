@@ -1,5 +1,5 @@
-<a [routerLink]="[ '/artist', album.id ]">
-    <img class="card-img" src="{{album.urlImagen}}" alt="Card image">
+<a (click)='navigate()'>
+    <img class="card-img" src="{{album.urlImagen}}" alt="Card image" style='min-height: 150px'>
     <div class="card-img-overlay">
         <div class="card-overcontent">
             <h5 class="card-title">{{album.nombre}}</h5>

@@ -6,8 +6,8 @@ import { Album } from '../components/album-card/album-card.component';
   providedIn: 'root'
 })
 export class SpotifyService {
-  token = 'Bearer BQAeM_v9z-afxaaBoc8S7XeNnanq6wyRgy3YUJJi_bqTuQ94LizfyPrNOZi9geiFpmDa8H_17FdrYm' +
-  'l2Dhd20x-rlPyudwm5mCcZlaNch0Fh9V2abS4KiKbAotPxejMy2mzDMCwvaSKfGCC5czD1BprtWprOW2CIRN_3JopQIf27mg';
+  token = 'Bearer BQC3_hAU7qIvLjxfpUoWIzIluTBM5IdSCxiSNm3_4_73D9NvzEn-d3xhC4LgNCTyQZ__otSOdrj' +
+  'q4cKLknXi6nQuadVyGyxUgJep_X4Wuc27qJOtQnRkSyPhqD_BsoEgQblDUhgojc4Ys40vrildX7_vpvk3Ew8Lv4eqss5AW1AeXw';
   searchVal: string;
 
   constructor(private http: HttpClient) {}
@@ -31,6 +31,7 @@ export class SpotifyService {
           });
 
           last.push({
+            id: album.id,
             nombre: album.name,
             artista: artistas.join(', '),
             urlImagen: album.images[0].url,
@@ -51,7 +52,7 @@ export class SpotifyService {
   }
 
   searchArtista(name: string) {
-    const last: Album[] = [];
+    const artistas: Album[] = [];
     const resp = this.http.get('https://api.spotify.com/v1/search?q=' + name + '&type=artist&limit=10', {
       headers: {
         'Accept': 'application/json',
@@ -62,7 +63,7 @@ export class SpotifyService {
     resp.subscribe((val: any) => {
       if (val.artists) {
         val.artists.items.forEach(artista => {
-          last.push({
+          artistas.push({
             id: artista.id,
             nombre: artista.name,
             artista: 'Seguidores: ' + artista.followers.total,
@@ -72,6 +73,68 @@ export class SpotifyService {
         });
       }
     });
-    return last;
+    return artistas;
   }
+
+  getTracks(id: string) {
+    const canciones: Song[] = [];
+    const resp = this.http.get(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+      }
+    });
+    resp.subscribe((val: any) => {
+      if (val.items) {
+        val.items.forEach(cancion => {
+          const durSec = cancion.duration_ms / 1000 / 60;
+          canciones.push({
+            id: cancion.id,
+            numero: cancion.track_number,
+            nombre: cancion.name,
+            minutos: Math.floor(durSec),
+            segundos: Math.floor((durSec % 1) * 100),
+            preview: cancion.preview_url
+          });
+        });
+      }
+    });
+    return canciones;
+  }
+
+  getAlbumInfo(id: string, f: any) {
+    const resp = this.http.get(`https://api.spotify.com/v1/albums/${id}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+      }
+    });
+    resp.subscribe((val: any) => {
+      const artistas: string[] = [];
+
+      val.artists.forEach(artista => {
+        artistas.push(artista.name);
+      });
+
+      const album: Album = {
+        id: val.id,
+        nombre: val.name,
+        artista: artistas.join(', '),
+        urlImagen: val.images[0].url,
+        fechaPublicacion: val.release_date
+      };
+      f(album);
+    });
+  }
+}
+
+export interface Song {
+  id: string;
+  numero: number;
+  nombre: string;
+  minutos: number;
+  segundos: number;
+  preview: string;
 }

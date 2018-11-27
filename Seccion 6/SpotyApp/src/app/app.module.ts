@@ -9,6 +9,7 @@ import { ArtistaComponent } from './components/artista/artista.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { APP_ROUTES } from './app.routes';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
+import { AlbumComponent } from './components/album/album.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
     SearchComponent,
     ArtistaComponent,
     NavbarComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

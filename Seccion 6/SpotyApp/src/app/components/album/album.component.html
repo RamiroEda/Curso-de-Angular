@@ -1,0 +1,28 @@
+<div class='mb-3' *ngIf="album">
+    <img src="{{album.urlImagen}}" class='float-left mb-3 mr-3 mt-2' alt="" width='300' height='300'>
+    <h1>{{album.nombre}}</h1>
+    <h3>{{album.artista}}</h3>
+</div>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Duracion</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let song of songs">
+            <th scope="row">{{song.numero}}</th>
+            <td>{{song.nombre}}</td>
+            <td style='width: 50px; text-align: center'>{{song.minutos}}:{{song.segundos | number:'2.0-0'}}</td>
+            <td style='width: 30px;'>
+                <a (click)="play(song.preview, audioPlayer)">
+                    <img src="https://www.gobiond.com/wp-content/uploads/2018/05/http___pluspng.com_img-png_play-button-png-filename-play-button-png-237.png" alt="" width='30' height='30'>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    <audio #audioPlayer></audio>
+</table>
