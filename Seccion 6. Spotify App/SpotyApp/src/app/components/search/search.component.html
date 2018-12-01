@@ -1,0 +1,10 @@
+<ng-container *ngIf="!service.loading; else elseTemplate">
+    <h2>Resultados de: {{term}}</h2>
+    <hr>
+    <div class="card-columns">
+        <app-album-card class="card bg-dark" *ngFor="let artista of artistas" [album]="artista"></app-album-card>
+    </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="loader" style="margin-top: 20%">Loading...</div>
+</ng-template>
